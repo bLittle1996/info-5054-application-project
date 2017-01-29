@@ -8,88 +8,64 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">-->
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link href="/css/app.css" rel="stylesheet">
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
+        <div id="wrap">
+        <!--HEADER START-->
+        @include('layouts/header')
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+          <!--HEROSHOT START-->
+          <section id="heroShot">
+            <div id="heroDesc">
+              <h1>GET THE MOST<br>OUT OF YOUR VEHICLE</h1>
+              <p>Simple, nice and user-friendly application of your vehicle and its history. <br>Only useful information!</p>
+              <a href="#"><img class="button" src="img/appStore.png" alt="App Store Link"></a>
+              <a href="#"><img class="button" src="img/googlePlay.png" alt="Google Play Link"></a>
             </div>
+            <img src="img/heroImage.png" alt="Hero Image" id="heroImg">
+          </section>
+          <!--FEATURES START-->
+          <section id="features">
+            <div id="halfCircle"></div>
+            <h2>PERFECT FEATURES</h2>
+            <p>Only the necessities</p>
+            <ul>
+              <li>
+                <img src="img/drivingRange.png" alt="Driving Range Graphic">
+                <div>
+                  <h3>DRIVING RANGE</h3>
+                  <p>Keep track of your cars driving history and driving range</p>
+                </div>
+              </li>
+              <li>
+                <img src="img/maintenance.png" alt="Maintenance Graphic">
+                <div>
+                  <h3>MAINTENANCE</h3>
+                  <p>Keep track of your cars maintenance and repair history</p>
+                </div>
+              </li>
+              <li>
+                <img src="img/expenses.png" alt="Expenses Graphic">
+                <div>
+                  <h3>EXPENSES</h3>
+                  <p>Track your spending on gas, repairs, and more</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <!--DOWNLOAD START-->
+          <section id="download">
+            <div>
+              <h1>HOW TO DOWNLOAD THE APP?</h1><br>
+              <p>Just download the app from the Apple App Store or Google Play Store!<br>Simple, nice, and user-friendly application for you and your vehicle.</p>
+            </div>
+          </section>
+          <!--FOOTER START-->
+          @include('layouts/footer')
         </div>
     </body>
 </html>

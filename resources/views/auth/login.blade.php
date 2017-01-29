@@ -1,12 +1,22 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+        <title>Laravel</title>
+
+        <link href="/css/app.css" rel="stylesheet">
+    </head>
+  <body>
+  <div id="wrap">
+      @include('layouts/header')
+      <section id="top"></section>
+      <section id="formContainer">
+        <div id="halfCircle"></div>
+                <div class="panel">
+                  <h1>Login</h1>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -61,8 +71,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+    </section>
     </div>
-</div>
-@endsection
+      @include('layouts/footer')
+  </body>
+</html>
