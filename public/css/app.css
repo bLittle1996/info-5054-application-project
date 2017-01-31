@@ -58,6 +58,7 @@ transform:translateY(2px);
 
 /*Nav Bar*/
 header{
+  z-index: 10;
   height:40px;
   width:100%;
   min-width:980px;
@@ -253,7 +254,47 @@ footer p{
   background:none;
 }
 
+#formWrap{
+  max-width:1280px;
+  margin:0 auto;
+  padding-bottom:200px;
+  min-height:700px;
+}
+
+#formWrap h1{
+margin-bottom:40px;
+}
+
 #formContainer .panel h1{
 text-align: center;
 margin-bottom:40px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+background:#143b46;
+border-radius: 0;
+border-width: 2px;
+color:#FFF;
+}
+
+#profileImg{
+  background-image:url("../img/profilebg.png");
+  background-size:contain;
+  width:227px;
+  height:227px;
+  position:absolute;
+  margin-top:20px;
+  margin-left:auto;
+  margin-right:auto;
+  left:0;
+  right:0;
+}
+
+#profileImg img{
+  border-radius: 50%;
+  display: block;
+  width:194px;
+  height:194px;
+  margin:0 auto;
+  margin-top:14px;
 }
