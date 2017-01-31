@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -19,7 +18,7 @@
             <div id="formWrap">
                 <div class="col-lg-6 col-md-12">
                   <h1>VEHICLE</h1>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/vehicle') }}">
+                    <form class="form-horizontal" role="form">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('model') ? ' has-error' : '' }}">
@@ -109,7 +108,7 @@
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-6">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit Vehicle
+                                    Submit Vehicle (NF)
                                 </button>
                             </div>
                         </div>
@@ -119,7 +118,7 @@
 
                 <div class="col-lg-6 col-md-12">
                   <h1 class="text-right">PERSONAL</h1>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/personal') }}">
+                    <form class="form-horizontal" role="form">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -223,7 +222,7 @@
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-6">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit Personal
+                                    Submit Personal (NF)
                                 </button>
                             </div>
                         </div>
