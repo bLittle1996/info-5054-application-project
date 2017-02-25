@@ -6,6 +6,7 @@
               <a href="{{ url('') }}" class="button">Home</a>
           @if (Auth::check())
               <a class="button" href="{{ url('/home') }}">Profile</a>
+              <a href="{{ url('/logout') }}" class="button">Logout</a>
           @else
               <a class="button" href="{{ url('/login') }}">Login</a>
               <a class="button" href="{{ url('/register') }}">Register</a>
