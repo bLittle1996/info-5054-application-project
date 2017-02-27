@@ -1,6 +1,6 @@
 <header>
   <nav>
-      <a href="{{ url('') }}"><img id="logo" src="img/logo.png" src="DriverLog Logo"></a>
+      <a id="logoLink" href="{{ url('') }}"><img id="logo" src="img/logo.png" src="DriverLog Logo"></a>
   @if (Route::has('login'))
       <div class="links">
               <a href="{{ url('') }}" class="button">Home</a>

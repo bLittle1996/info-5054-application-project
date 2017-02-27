@@ -55,13 +55,19 @@ transition:0.3s;
 .button:hover{
 transform:translateY(2px);
 }
+form{
+  padding:10px;
+}
+
+.form-group{
+  max-width:100%;
+}
 
 /*Nav Bar*/
 header{
   z-index: 10;
   height:40px;
   width:100%;
-  min-width:980px;
   padding-top:8px;
   padding-bottom:38px;
   position:fixed;
@@ -73,8 +79,13 @@ header{
 
 nav{
   max-width:1280px;
-  min-width:980px;
   margin:0 auto;
+}
+
+#logoLink{
+display:inline;
+margin:0;
+width:0;
 }
 
 #logo{
@@ -109,8 +120,9 @@ nav{
 
 #heroShot{
 padding-top:86px;
-max-width:1080px;
-min-width:980px;
+padding-left:10px;
+padding-right:10px;
+width:90%;
 margin:0 auto;
 }
 
@@ -132,7 +144,7 @@ margin:0 auto;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  width:360px;
+  max-width:360px;
 }
 
 /*features*/
@@ -204,6 +216,7 @@ text-align: left;
 #download{
   padding-top:40px;
   background-color:#648cff;
+  padding-left:20px;
 }
 
 #download div{
@@ -217,6 +230,10 @@ text-align: left;
 
 #download div h1, #download div p{
   width:380px;
+}
+
+#download p{
+text-shadow: 0 0 4px #648cff;
 }
 
 #download div img{
@@ -297,4 +314,152 @@ color:#FFF;
   height:194px;
   margin:0 auto;
   margin-top:14px;
+}
+
+@media only screen and (max-width: 1000px){
+
+  #heroDesc{
+    max-width:360px;
+  }
+
+  #heroDesc a:last-child{
+    margin-left:20px;
+  }
+
+  #heroImg{
+    max-width:260px;
+  }
+
+  #features ul{
+    width:90%;
+    padding-left:10px;
+    padding-right:10px;
+    margin-top:30px;
+  }
+
+  #features ul li{
+width:33%;
+height:140px;
+  }
+
+  #features ul li img{
+    width:50px;
+    margin-right:4px;
+  }
+
+  #features ul li div{
+    max-width: 144px;
+    float:left;
+}
+
+  #features ul li div h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    color: #84cadf;
+    line-height: 20px;
+    min-height:30px;
+}
+
+#download{
+  padding-top:10px;
+}
+
+#download div{
+  width:90%;
+  height:320px;
+  background-size: 520px;
+}
+
+#download div h1{
+  margin-top:10px;
+}
+
+#download div p{
+  width:360px;
+}
+
+}
+
+@media only screen and (max-width: 730px){
+header{
+  height:80px;
+}
+
+#logoLink{
+display:block;
+margin:0 auto;
+width:180px;
+height:34px;
+}
+
+#logo{
+  margin-right:0;
+}
+
+.links{
+margin:0 auto;
+width:362px;
+height:20px;
+float:none;
+display:block;
+}
+
+.smlink{
+display: none;
+}
+
+#heroShot{
+  width:360px;
+  height: 320px;
+}
+
+#heroImg{
+  display:none;
+}
+
+#features ul{
+  width:90%;
+  padding-left:10px;
+  padding-right:10px;
+  margin-top:30px;
+}
+
+#features ul li{
+width:80%;
+max-width:80%;
+min-width:370px;
+height:120px;
+display:block;
+margin:0 auto;
+}
+
+#features ul li img{
+  width:10%;
+  min-width:60px;
+  margin-right:10px;
+}
+
+#features ul li div{
+  max-width: 300px;
+}
+
+
+#download div{
+  width:90%;
+  margin:0 auto;
+  background-size: 360px;
+  background-position: bottom;
+}
+
+#download div h1{
+  margin:0 auto;
+  width:380px;
+}
+
+#download div p{
+margin:0 auto;
+  width:380px;
+}
+
 }
