@@ -17,8 +17,16 @@
         <div id="halfCircle"></div>
             <div id="formWrap">
                 <div class="col-lg-6 col-md-12">
-                  <h1>VEHICLE</h1>
-                    <form class="form-horizontal" role="form">
+                  <h1>VEHICLES</h1>
+                    @foreach(Auth::user()->vehicles()->get() as $vehicle)
+                      <div class="col-md-12">
+                        <div>{{ $vehicle->make . ' ' . $vehicle->model . ' ' . $vehicle->year }}</div>
+                        <div>{{ $vehicle->colour }}</div>
+                        <div>{{ $vehicle->license_plate }}</div>
+                        <div>{{ $vehicle->VIN }}</div>
+                      </div>
+                    @endforeach
+                    <form class="form-horizontal" role="form" action="/vehicle/create" method="POST">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('model') ? ' has-error' : '' }}">
@@ -81,7 +89,7 @@
                             <label for="plate" class="col-md-2 control-label">Plate</label>
 
                             <div class="col-md-8">
-                                <input id="plate" type="text" class="form-control" name="plate" required>
+                                <input id="plate" type="text" class="form-control" name="license_plate" required>
 
                                 @if ($errors->has('plate'))
                                     <span class="help-block">
@@ -95,7 +103,7 @@
                             <label for="vinNum" class="col-md-2 control-label">VIN Number</label>
 
                             <div class="col-md-8">
-                                <input id="vinNum" type="text" class="form-control" name="vinNum" required>
+                                <input id="vinNum" type="text" class="form-control" name="VIN" required>
 
                                 @if ($errors->has('vinNum'))
                                     <span class="help-block">
@@ -104,11 +112,15 @@
                                 @endif
                             </div>
                         </div>
-
+                        @if(Session::has('failure'))
+                          <div class="col-md-8">
+                            {{ Session::get('failure') }}
+                          </div>
+                        @endif
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-6">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit Vehicle (NF)
+                                    Add Vehicle
                                 </button>
                             </div>
                         </div>
@@ -118,14 +130,14 @@
 
                 <div class="col-lg-6 col-md-12">
                   <h1 class="text-right">PERSONAL</h1>
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="/user/update" method="POST">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-2 control-label">Name</label>
 
                             <div class="col-md-8">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -135,25 +147,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-2 control-label">E-Mail Address</label>
-
-                            <div class="col-md-8">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-2 control-label">Home Address</label>
 
                             <div class="col-md-8">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+                                <input id="address" type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" required>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -167,7 +165,7 @@
                             <label for="city" class="col-md-2 control-label">City</label>
 
                             <div class="col-md-8">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required>
+                                <input id="city" type="text" class="form-control" name="city" value="{{ Auth::user()->city }}" required>
 
                                 @if ($errors->has('city'))
                                     <span class="help-block">
@@ -181,7 +179,7 @@
                             <label for="province" class="col-md-2 control-label">Province</label>
 
                             <div class="col-md-8">
-                                <input id="province" type="text" class="form-control" name="province" value="{{ old('province') }}" required>
+                                <input id="province" type="text" class="form-control" name="province" value="{{ Auth::user()->province }}" required>
 
                                 @if ($errors->has('province'))
                                     <span class="help-block">
@@ -195,7 +193,7 @@
                             <label for="postal" class="col-md-2 control-label">Postal Code</label>
 
                             <div class="col-md-8">
-                                <input id="postal" type="text" class="form-control" name="postal" value="{{ old('postal') }}" required>
+                                <input id="postal" type="text" class="form-control" name="postal_code" value="{{ Auth::user()->postal_code }}" required>
 
                                 @if ($errors->has('postal'))
                                     <span class="help-block">
@@ -209,7 +207,7 @@
                             <label for="country" class="col-md-2 control-label">Country</label>
 
                             <div class="col-md-8">
-                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" required>
+                                <input id="country" type="text" class="form-control" name="country" value="{{ Auth::user()->country }}" required>
 
                                 @if ($errors->has('country'))
                                     <span class="help-block">
@@ -222,7 +220,7 @@
                         <div class="form-group">
                             <div class="col-md-4 col-md-offset-6">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit Personal (NF)
+                                    Update Personal
                                 </button>
                             </div>
                         </div>

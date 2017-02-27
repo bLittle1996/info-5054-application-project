@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
+
+Route::post('/vehicle/create', 'VehicleController@create');
+Route::post('/user/update', 'UserController@update');

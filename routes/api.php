@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'user'], function () {
   Route::post('/register', 'Auth\RegisterController@jsonCreate');
+  Route::get('/vehicles', function() {
+    return Auth::user()->vehicles()->get();
+  })->middleware('auth:api');
+  Route::post('/update', 'UserController@jsonUpdate')->middleware('auth:api');
+});
+
+Route::group(['prefix' => 'vehicle'], function () {
+  Route::post('/create', 'VehicleController@jsonCreate')->middleware('auth:api');
 });
