@@ -419,47 +419,47 @@ display: none;
 }
 
 #features ul{
-  width:90%;
-  padding-left:10px;
+  width:100%;
+  padding-left:2px;
   padding-right:10px;
   margin-top:30px;
 }
 
 #features ul li{
-width:80%;
-max-width:80%;
-min-width:370px;
+max-width:360px;
+width:360px;
 height:120px;
 display:block;
 margin:0 auto;
 }
 
 #features ul li img{
-  width:10%;
-  min-width:60px;
+  width:8%;
+  min-width:50px;
   margin-right:10px;
 }
 
 #features ul li div{
-  max-width: 300px;
+  max-width: 280px;
 }
 
 
 #download div{
-  width:90%;
+  width:100%;
   margin:0 auto;
-  background-size: 360px;
+  background-size: 320px;
   background-position: bottom;
 }
 
 #download div h1{
   margin:0 auto;
-  width:380px;
+  width:360px;
+  font-size:30px;
 }
 
 #download div p{
 margin:0 auto;
-  width:380px;
+  width:330px;
 }
 
 }
