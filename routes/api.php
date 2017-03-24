@@ -21,8 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'user'], function () {
   Route::post('/register', 'Auth\RegisterController@jsonCreate');
   Route::get('/vehicles', function() {
-    return Auth::user()->vehicles()->get();
+    return Auth::user()->vehicles()->with('vehicleStats')->get();
   })->middleware('auth:api');
+  Route::post('/vehicles/{vehicle}/stat', 'VehicleController@apiVehicleStatAdd')->middleware('auth:api');
   Route::post('/update', 'UserController@jsonUpdate')->middleware('auth:api');
 });
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 
 use App\Vehicle;
+use App\VehicleStat;
 
 class VehicleController extends Controller
 {
@@ -53,5 +54,19 @@ class VehicleController extends Controller
       DB::rollback();
       return response()->json(['error' => 'Unable to create vehicle', 'error_message' => $ex->getMessage()], 500);
     }
+  }
+
+  public function apiVehicleStatAdd(Request $request, Vehicle $vehicle) {
+    try {
+    $vehicleStat = new VehicleStat();
+    $vehicleStat->meters_travelled = $request['meters_travelled'];
+    $vehicleStat->log_duration = $request['log_duration'];
+    $vehicleStat->litres_of_fuel_used = $request['litres_of_fuel_used'];
+    $vehicleStat->associate($vehicle);
+    $vehicleStat->save();
+    return response()->json($vehicleStat, 200);
+  } catch(\Exception $e) {
+    return response()->json(['error' => 'Unable to add stat to vehicle!', 'error_message' => $e->getMessage()]);
+  }
   }
 }
