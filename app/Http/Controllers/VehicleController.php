@@ -63,7 +63,7 @@ class VehicleController extends Controller
       if(!empty($request['log_duration'])) $vehicleStat->log_duration = $request['log_duration'];
       if(!empty($request['litres_of_fuel_used']))$vehicleStat->litres_of_fuel_used = $request['litres_of_fuel_used'];
       if(!empty($request['odo_start'])) $vehicleStat->odo_start = $request['odo_start'];
-      if(!empty($request['odo_end'])) $vehicleStat->odo_start = $request['odo_end'];
+      if(!empty($request['odo_end'])) $vehicleStat->odo_end = $request['odo_end'];
       $vehicleStat->vehicle()->associate($vehicle);
       $vehicleStat->save();
       return response()->json($vehicleStat, 200);
