@@ -66,9 +66,9 @@ class VehicleController extends Controller
       if(!empty($request['odo_end'])) $vehicleStat->odo_end = $request['odo_end'];
       $vehicleStat->vehicle()->associate($vehicle);
       $vehicleStat->save();
-      return response()->json($vehicleStat, 200);
+      return response()->json(['success' => 'Added vehicle stat!'], 200);
     } catch(\Exception $e) {
-      return response()->json(['error' => 'Unable to add stat to vehicle!', 'error_message' => $e->getMessage()]);
+      return response()->json(['error' => 'Unable to add stat to vehicle!', 'error_message' => $e->getMessage()], 500);
     }
   }
 }
