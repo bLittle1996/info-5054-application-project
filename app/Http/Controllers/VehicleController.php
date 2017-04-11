@@ -19,7 +19,7 @@ class VehicleController extends Controller
       'year' => 'required|integer',
       'license_plate' => 'required',
       'VIN' => 'required'
-    ]);
+      ]);
     try {
       $vehicle = new Vehicle();
       $vehicle->make = $request['make'];
@@ -58,15 +58,17 @@ class VehicleController extends Controller
 
   public function apiVehicleStatAdd(Request $request, Vehicle $vehicle) {
     try {
-    $vehicleStat = new VehicleStat();
-    $vehicleStat->meters_travelled = $request['meters_travelled'];
-    $vehicleStat->log_duration = $request['log_duration'];
-    $vehicleStat->litres_of_fuel_used = $request['litres_of_fuel_used'];
-    $vehicleStat->vehicle()->associate($vehicle);
-    $vehicleStat->save();
-    return response()->json($vehicleStat, 200);
-  } catch(\Exception $e) {
-    return response()->json(['error' => 'Unable to add stat to vehicle!', 'error_message' => $e->getMessage()]);
-  }
+      $vehicleStat = new VehicleStat();
+      $vehicleStat->meters_travelled = $request['meters_travelled'];
+      if(!empty($request['log_duration'])) $vehicleStat->log_duration = $request['log_duration'];
+      if(!empty($request['litres_of_fuel_used']))$vehicleStat->litres_of_fuel_used = $request['litres_of_fuel_used'];
+      if(!empty($request['odo_start'])) $vehicleStat->odo_start = $request['odo_start'];
+      if(!empty($request['odo_end'])) $vehicleStat->odo_start = $request['odo_end'];
+      $vehicleStat->vehicle()->associate($vehicle);
+      $vehicleStat->save();
+      return response()->json($vehicleStat, 200);
+    } catch(\Exception $e) {
+      return response()->json(['error' => 'Unable to add stat to vehicle!', 'error_message' => $e->getMessage()]);
+    }
   }
 }
