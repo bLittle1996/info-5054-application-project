@@ -24,9 +24,6 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/vehicles', function() {
     return Auth::user()->vehicles()->with('vehicleStats')->get();
   })->middleware('auth:api');
-  Route::get('/vehicles/{vehicle}', function (Vehicle $vehicle) {
-  	return Auth::user()->vehicles()->with('vehicleStats')->where('id', $vehicle->id)->first();
-  })->middleware('auth:api');
   Route::post('/vehicles/{vehicle}/stat', 'VehicleController@apiVehicleStatAdd')->middleware('auth:api');
   Route::post('/update', 'UserController@jsonUpdate')->middleware('auth:api');
 });
